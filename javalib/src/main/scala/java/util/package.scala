@@ -2,6 +2,8 @@ package java
 
 package object util {
 
+  type ArrayList[E] = LinkedList[E]
+
   implicit private[util] class CompareNullablesOps(val self: Any)
       extends AnyVal {
     @inline
