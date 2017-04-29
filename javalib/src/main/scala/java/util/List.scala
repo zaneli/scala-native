@@ -1,6 +1,9 @@
 package java.util
 
 trait List[E] extends Collection[E] {
+  def size(): Int
+  def isEmpty(): Boolean
+  def iterator(): Iterator[E]
   def get(index: Int): E
   def set(index: Int, element: E): E
   def add(e: E): Boolean
