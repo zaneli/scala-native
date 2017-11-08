@@ -72,6 +72,7 @@ class HashSet[E]
 
       def next(): E = {
         last = Some(iter.next().inner)
+        println(s"last: $last")
         last.get
       }
 
