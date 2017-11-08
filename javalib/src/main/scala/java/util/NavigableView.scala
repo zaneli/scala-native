@@ -77,16 +77,16 @@ private[util] class NavigableView[E](original: NavigableSet[E],
     original.addAll(c)
 
   def lower(e: E): E =
-    headSet(e, false).asScala.lastOption.getOrElse(null.asInstanceOf[E])
+    headSet(e, false).asScala.lastOption.orNull
 
   def floor(e: E): E =
-    headSet(e, true).asScala.lastOption.getOrElse(null.asInstanceOf[E])
+    headSet(e, true).asScala.lastOption.orNull
 
   def ceiling(e: E): E =
-    tailSet(e, true).asScala.headOption.getOrElse(null.asInstanceOf[E])
+    tailSet(e, true).asScala.headOption.orNull
 
   def higher(e: E): E =
-    tailSet(e, false).asScala.headOption.getOrElse(null.asInstanceOf[E])
+    tailSet(e, false).asScala.headOption.orNull
 
   def pollFirst(): E = {
     val polled = inner().headOption

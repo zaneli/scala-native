@@ -54,14 +54,12 @@ class Hashtable[K, V] private (inner: mutable.HashMap[Box[Any], V])
   // protected def rehash(): Unit
 
   def put(key: K, value: V): V =
-    inner
-      .put(Box(key.asInstanceOf[AnyRef]), value)
-      .getOrElse(null.asInstanceOf[V])
+    inner.put(Box(key.asInstanceOf[AnyRef]), value).orNull
 
   def remove(key: Any): V = {
     if (key == null)
       throw new NullPointerException
-    inner.remove(Box(key)).getOrElse(null.asInstanceOf[V])
+    inner.remove(Box(key)).orNull
   }
 
   def putAll(m: ju.Map[_ <: K, _ <: V]): Unit =

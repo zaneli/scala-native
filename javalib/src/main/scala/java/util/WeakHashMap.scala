@@ -43,7 +43,7 @@ class WeakHashMap[K, V] protected (inner: mutable.Map[Box[K], V])
     new EntrySet
 
   override def get(key: Any): V =
-    inner.get(Box(key.asInstanceOf[K])).getOrElse(null.asInstanceOf[V])
+    inner.get(Box(key.asInstanceOf[K])).orNull
 
   override def isEmpty(): Boolean =
     inner.isEmpty
@@ -52,7 +52,7 @@ class WeakHashMap[K, V] protected (inner: mutable.Map[Box[K], V])
     new KeySet
 
   override def put(key: K, value: V): V =
-    inner.put(Box(key), value).getOrElse(null.asInstanceOf[V])
+    inner.put(Box(key), value).orNull
 
   override def remove(key: Any): V = {
     val boxedKey = Box(key.asInstanceOf[K])
